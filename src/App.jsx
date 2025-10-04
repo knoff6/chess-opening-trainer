@@ -368,13 +368,13 @@ const OPENINGS_DATABASE = {
     {
       name: "Queen's Gambit",
       eco: "D06",
-      moves: ["d4", "d5", "c4", "e6", "Nc3", "Nf6", "Bg5", "Be7", "e3", "O-O", "Nf3", "Nbd7", "Rc1"],
+      moves: ["d4", "d5", "c4", "e6", "Nc3", "Nf6", "Bg5", "Be7", "e3", "O-O", "Nf3", "Nbd7", "Rc1", "c6"],
       description: "Strategic opening offering a pawn for central control"
     },
     {
       name: "King's Gambit",
       eco: "C30",
-      moves: ["e4", "e5", "f4", "exf4", "Nf3", "g5", "h4", "g4", "Ne5", "Nf6", "Bc4", "d5"],
+      moves: ["e4", "e5", "f4", "exf4", "Nf3", "g5", "h4", "g4", "Ne5", "Nf6", "Bc4", "d5", "exd5"],
       description: "Aggressive romantic-era gambit"
     },
     {
@@ -386,11 +386,11 @@ const OPENINGS_DATABASE = {
     {
       name: "English Opening",
       eco: "A10",
-      moves: ["c4", "e5", "Nc3", "Nf6", "Nf3", "Nc6", "g3", "d5", "cxd5", "Nxd5", "Bg2"],
+      moves: ["c4", "e5", "Nc3", "Nf6", "Nf3", "Nc6", "g3", "d5", "cxd5", "Nxd5", "Bg2", "Nb6"],
       description: "Hypermodern flank opening"
     },
     {
-      name: "Scholar's Mate Attempt",
+      name: "Scholar's Mate Trap",
       eco: "C20",
       moves: ["e4", "e5", "Bc4", "Nc6", "Qh5", "Nf6", "Qxf7"],
       description: "Beginner trap aiming for quick mate"
@@ -398,8 +398,56 @@ const OPENINGS_DATABASE = {
     {
       name: "Vienna Game",
       eco: "C25",
-      moves: ["e4", "e5", "Nc3", "Nf6", "f4", "d5", "fxe5", "Nxe4", "Nf3", "Bg4", "Qe2"],
+      moves: ["e4", "e5", "Nc3", "Nf6", "f4", "d5", "fxe5", "Nxe4", "Nf3", "Bg4", "Qe2", "Nxc3"],
       description: "Flexible opening preparing f4"
+    },
+    {
+      name: "London System",
+      eco: "D02",
+      moves: ["d4", "Nf6", "Nf3", "d5", "Bf4", "e6", "e3", "Bd6", "Bg3", "O-O", "Nbd2", "c5", "c3"],
+      description: "Solid and systematic opening"
+    },
+    {
+      name: "Catalan Opening",
+      eco: "E00",
+      moves: ["d4", "Nf6", "c4", "e6", "g3", "d5", "Bg2", "Be7", "Nf3", "O-O", "O-O", "Nbd7"],
+      description: "Combines Queen's Gambit with fianchetto"
+    },
+    {
+      name: "Four Knights Game",
+      eco: "C47",
+      moves: ["e4", "e5", "Nf3", "Nc6", "Nc3", "Nf6", "Bb5", "Bb4", "O-O", "O-O", "d3", "d6"],
+      description: "Symmetrical and solid opening"
+    },
+    {
+      name: "Giuoco Piano",
+      eco: "C53",
+      moves: ["e4", "e5", "Nf3", "Nc6", "Bc4", "Bc5", "c3", "Nf6", "d4", "exd4", "cxd4", "Bb4", "Bd2"],
+      description: "Quiet Italian Game variation"
+    },
+    {
+      name: "Evans Gambit",
+      eco: "C51",
+      moves: ["e4", "e5", "Nf3", "Nc6", "Bc4", "Bc5", "b4", "Bxb4", "c3", "Ba5", "d4", "exd4"],
+      description: "Aggressive pawn sacrifice for rapid development"
+    },
+    {
+      name: "Danish Gambit",
+      eco: "C21",
+      moves: ["e4", "e5", "d4", "exd4", "c3", "dxc3", "Bc4", "cxb2", "Bxb2", "Nf6", "Nc3", "Bb4"],
+      description: "Double pawn gambit for attacking chances"
+    },
+    {
+      name: "Blackmar-Diemer Gambit",
+      eco: "D00",
+      moves: ["d4", "d5", "e4", "dxe4", "Nc3", "Nf6", "f3", "exf3", "Nxf3", "Bg4", "h3", "Bxf3"],
+      description: "Tactical gambit against d5"
+    },
+    {
+      name: "Traxler Counter-Gambit Response",
+      eco: "C57",
+      moves: ["e4", "e5", "Nf3", "Nc6", "Bc4", "Nf6", "Ng5", "Bc5", "Nxf7", "Bxf2", "Kxf2", "Nxe4"],
+      description: "Sharp tactical complications"
     }
   ],
   black: [
@@ -410,46 +458,118 @@ const OPENINGS_DATABASE = {
       description: "Sharp, fighting defense"
     },
     {
+      name: "Sicilian Dragon",
+      eco: "B70",
+      moves: ["e4", "c5", "Nf3", "d6", "d4", "cxd4", "Nxd4", "Nf6", "Nc3", "g6", "Be3", "Bg7", "f3", "O-O"],
+      description: "Aggressive fianchetto variation"
+    },
+    {
+      name: "Sicilian Najdorf",
+      eco: "B90",
+      moves: ["e4", "c5", "Nf3", "d6", "d4", "cxd4", "Nxd4", "Nf6", "Nc3", "a6", "Be3", "e5", "Nb3"],
+      description: "Most popular Sicilian variation"
+    },
+    {
       name: "French Defense",
       eco: "C00",
-      moves: ["e4", "e6", "d4", "d5", "Nc3", "Nf6", "Bg5", "Be7", "e5", "Nfd7", "Bxe7", "Qxe7", "f4"],
+      moves: ["e4", "e6", "d4", "d5", "Nc3", "Nf6", "Bg5", "Be7", "e5", "Nfd7", "Bxe7", "Qxe7", "f4", "O-O"],
       description: "Solid defensive system"
     },
     {
       name: "Caro-Kann Defense",
       eco: "B10",
-      moves: ["e4", "c6", "d4", "d5", "Nc3", "dxe4", "Nxe4", "Bf5", "Ng3", "Bg6", "h4", "h6", "Nf3"],
+      moves: ["e4", "c6", "d4", "d5", "Nc3", "dxe4", "Nxe4", "Bf5", "Ng3", "Bg6", "h4", "h6", "Nf3", "Nd7"],
       description: "Solid and reliable defense"
     },
     {
       name: "Scandinavian Defense",
       eco: "B01",
-      moves: ["e4", "d5", "exd5", "Qxd5", "Nc3", "Qa5", "d4", "Nf6", "Nf3", "Bf5", "Bc4", "e6"],
+      moves: ["e4", "d5", "exd5", "Qxd5", "Nc3", "Qa5", "d4", "Nf6", "Nf3", "Bf5", "Bc4", "e6", "Bd2"],
       description: "Immediate central challenge"
     },
     {
       name: "Pirc Defense",
       eco: "B07",
-      moves: ["e4", "d6", "d4", "Nf6", "Nc3", "g6", "f4", "Bg7", "Nf3", "O-O", "Bd3", "Na6"],
+      moves: ["e4", "d6", "d4", "Nf6", "Nc3", "g6", "f4", "Bg7", "Nf3", "O-O", "Bd3", "Na6", "O-O"],
       description: "Hypermodern defense"
     },
     {
       name: "King's Indian Defense",
       eco: "E60",
-      moves: ["d4", "Nf6", "c4", "g6", "Nc3", "Bg7", "e4", "d6", "Nf3", "O-O", "Be2", "e5", "O-O"],
+      moves: ["d4", "Nf6", "c4", "g6", "Nc3", "Bg7", "e4", "d6", "Nf3", "O-O", "Be2", "e5", "O-O", "Nc6"],
       description: "Aggressive counterattacking setup"
     },
     {
       name: "Queen's Gambit Declined",
       eco: "D30",
-      moves: ["d4", "d5", "c4", "e6", "Nc3", "Nf6", "Bg5", "Be7", "e3", "O-O", "Nf3", "Nbd7", "Rc1"],
+      moves: ["d4", "d5", "c4", "e6", "Nc3", "Nf6", "Bg5", "Be7", "e3", "O-O", "Nf3", "Nbd7", "Rc1", "c6"],
       description: "Classical and solid defense"
     },
     {
       name: "Alekhine's Defense",
       eco: "B02",
-      moves: ["e4", "Nf6", "e5", "Nd5", "d4", "d6", "Nf3", "Bg4", "Be2", "e6", "O-O"],
+      moves: ["e4", "Nf6", "e5", "Nd5", "d4", "d6", "Nf3", "Bg4", "Be2", "e6", "O-O", "Be7"],
       description: "Hypermodern provocation"
+    },
+    {
+      name: "Nimzo-Indian Defense",
+      eco: "E20",
+      moves: ["d4", "Nf6", "c4", "e6", "Nc3", "Bb4", "Qc2", "O-O", "a3", "Bxc3", "Qxc3", "b6"],
+      description: "Strategic pin on knight"
+    },
+    {
+      name: "Grünfeld Defense",
+      eco: "D80",
+      moves: ["d4", "Nf6", "c4", "g6", "Nc3", "d5", "cxd5", "Nxd5", "e4", "Nxc3", "bxc3", "Bg7"],
+      description: "Dynamic counterplay against d4"
+    },
+    {
+      name: "Slav Defense",
+      eco: "D10",
+      moves: ["d4", "d5", "c4", "c6", "Nf3", "Nf6", "Nc3", "dxc4", "a4", "Bf5", "e3", "e6"],
+      description: "Solid defense maintaining central pawn"
+    },
+    {
+      name: "Dutch Defense",
+      eco: "A80",
+      moves: ["d4", "f5", "g3", "Nf6", "Bg2", "e6", "Nf3", "Be7", "O-O", "O-O", "c4", "d6"],
+      description: "Aggressive kingside expansion"
+    },
+    {
+      name: "Benoni Defense",
+      eco: "A43",
+      moves: ["d4", "c5", "d5", "e6", "Nc3", "exd5", "cxd5", "d6", "e4", "g6", "Nf3", "Bg7"],
+      description: "Counterattacking pawn structure"
+    },
+    {
+      name: "Budapest Gambit",
+      eco: "A51",
+      moves: ["d4", "Nf6", "c4", "e5", "dxe5", "Ng4", "Bf4", "Nc6", "Nf3", "Bb4", "Nbd2", "Qe7"],
+      description: "Gambit for quick development and attack"
+    },
+    {
+      name: "Benko Gambit",
+      eco: "A57",
+      moves: ["d4", "Nf6", "c4", "c5", "d5", "b5", "cxb5", "a6", "bxa6", "Bxa6", "Nc3", "d6"],
+      description: "Pawn sacrifice for queenside pressure"
+    },
+    {
+      name: "Old Benoni Defense",
+      eco: "A43",
+      moves: ["d4", "c5", "d5", "e5", "Nc3", "d6", "e4", "Be7", "Nf3", "Bg4", "Be2", "Nf6"],
+      description: "Solid closed structure"
+    },
+    {
+      name: "Elephant Trap (QGD)",
+      eco: "D51",
+      moves: ["d4", "d5", "c4", "e6", "Nc3", "Nf6", "Bg5", "Nbd7", "cxd5", "exd5", "Nxd5", "Nxd5", "Bxd8"],
+      description: "Trap in Queen's Gambit Declined"
+    },
+    {
+      name: "Fishing Pole Trap (Ruy López)",
+      eco: "C65",
+      moves: ["e4", "e5", "Nf3", "Nc6", "Bb5", "Nf6", "O-O", "Ng4", "h3", "h5", "hxg4", "hxg4"],
+      description: "Tactical trap in Ruy López"
     }
   ]
 };
