@@ -633,6 +633,8 @@ const ChessBoard = ({ game, onMove, playerColor }) => {
 
   const getPieceSymbol = (piece) => {
     if (!piece) return '';
+    // White pieces: outlined symbols (naturally light)
+    // Black pieces: filled symbols (naturally dark)
     const symbols = {
       w: { p: '♙', n: '♘', b: '♗', r: '♖', q: '♕', k: '♔' },
       b: { p: '♟', n: '♞', b: '♝', r: '♜', q: '♛', k: '♚' }
@@ -665,15 +667,13 @@ const ChessBoard = ({ game, onMove, playerColor }) => {
                   ${isPlayerTurn ? 'hover:opacity-80' : ''}`}
               >
                 {piece && (
-                  <span className={`
-                    ${piece.color === 'w' 
-                      ? 'text-white filter drop-shadow-[0_2px_4px_rgba(0,0,0,0.8)]' 
-                      : 'text-gray-900 filter drop-shadow-[0_1px_2px_rgba(255,255,255,0.5)]'}
-                  `}
-                  style={{
-                    textShadow: piece.color === 'w' 
-                      ? '0 0 3px rgba(0,0,0,0.9), 0 0 6px rgba(0,0,0,0.6)' 
-                      : '0 0 2px rgba(255,255,255,0.8), 0 0 4px rgba(255,255,255,0.4)'
+                  <span style={{
+                    color: piece.color === 'w' ? '#FFFFFF' : '#1a1a1a',
+                    filter: piece.color === 'w' 
+                      ? 'drop-shadow(0 3px 6px rgba(0,0,0,1)) drop-shadow(0 0 4px rgba(0,0,0,0.9)) drop-shadow(0 0 8px rgba(0,0,0,0.7))' 
+                      : 'drop-shadow(0 2px 3px rgba(255,255,255,0.6)) drop-shadow(0 0 3px rgba(255,255,255,0.4))',
+                    WebkitTextStroke: piece.color === 'w' ? '1px rgba(0,0,0,0.4)' : 'none',
+                    fontWeight: piece.color === 'w' ? '600' : '400'
                   }}>
                     {getPieceSymbol(piece)}
                   </span>
@@ -900,11 +900,12 @@ const App = () => {
           if (nextMoveIndex < newOpeningMoves.length) {
             compMove = newOpeningMoves[nextMoveIndex];
           } else {
-            // Beyond opening book - generate a move
-            const generatedMove = generateComputerMove(nextGame);
-            if (generatedMove) {
-              compMove = generatedMove;
-            }
+            // Beyond opening book - if we played all opening moves perfectly, end as success
+            const movesPlayed = Math.ceil(nextMoveIndex / 2);
+            setMoveCount(movesPlayed);
+            setResultType('success');
+            setGameState('result');
+            return;
           }
           
           if (compMove) {
@@ -949,11 +950,12 @@ const App = () => {
         if (nextMoveIndex < openingMoves.length) {
           compMove = openingMoves[nextMoveIndex];
         } else {
-          // Beyond opening book - generate a move
-          const generatedMove = generateComputerMove(nextGame);
-          if (generatedMove) {
-            compMove = generatedMove;
-          }
+          // Beyond opening book - if we played all opening moves perfectly, end as success
+          const movesPlayed = Math.ceil(nextMoveIndex / 2);
+          setMoveCount(movesPlayed);
+          setResultType('success');
+          setGameState('result');
+          return;
         }
         
         if (compMove) {
